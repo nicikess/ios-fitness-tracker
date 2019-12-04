@@ -1,5 +1,6 @@
 import UIKit
 import MapKit
+import CoreData
 
 class RunDetailsViewController: UIViewController {
   
@@ -8,11 +9,27 @@ class RunDetailsViewController: UIViewController {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
   @IBOutlet weak var paceLabel: UILabel!
+    
+//Context wird von PastRunViewController übergeben
+var managedContext : NSManagedObjectContext?
   
   var run: Run!
+    
+//Wird von PastRunViewController übergeben
+    var detailItem: Run? {
+        didSet {
+//            // Update the view.
+//
+//            //detailItem ist neue Person
+//            //run = detailItem
+//            print(run)
+//            configureView()
+        }
+    }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    //run = detailItem
     configureView()
   }
   
@@ -24,7 +41,7 @@ class RunDetailsViewController: UIViewController {
     let formattedTime = FormatDisplay.time(seconds)
     let formattedPace = FormatDisplay.pace(distance: distance,
                                            seconds: seconds,
-                                           outputUnit: UnitSpeed.minutesPerMile)
+                                           outputUnit: UnitSpeed.kilometersPerHour)
     
     distanceLabel.text = "Distance:  \(formattedDistance)"
     dateLabel.text = formattedDate

@@ -10,7 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
   
-  override func viewDidLoad() {
+    @IBOutlet weak var dashBoardButton: UIButton!
+    @IBOutlet weak var newRunButton: UIButton!
+    override func viewDidLoad() {
+    dashBoardButton.layer.cornerRadius = 10
+    newRunButton.layer.cornerRadius = 10
     super.viewDidLoad()
   }
   

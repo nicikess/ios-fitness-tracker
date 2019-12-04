@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Cwp-Z4-gCT">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +9,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="MoonRunner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="running_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q2v-TW-4jN">
                                 <rect key="frame" x="16" y="52" width="343" height="533.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to MoonRunner!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dod-D5-iS9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Running!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dod-D5-iS9">
                                         <rect key="frame" x="71.5" y="0.0" width="200" height="178"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="nd3-NJ-AwN"/>
@@ -31,23 +30,25 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hjn-xu-6Xv">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hjn-xu-6Xv">
                                         <rect key="frame" x="30" y="178" width="283" height="355.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iq7-UK-TCs">
-                                                <rect key="frame" x="0.0" y="0.0" width="283" height="167.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="283" height="173.5"/>
                                                 <color key="backgroundColor" red="0.0" green="0.57344603538513184" blue="0.27058163285255432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="New Run"/>
+                                                <state key="normal" title="Record  - New Run"/>
                                                 <connections>
                                                     <segue destination="uBb-oE-18m" kind="show" identifier="NewRunViewController" id="1ya-b0-l1N"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVm-Bp-73f">
-                                                <rect key="frame" x="0.0" y="187.5" width="283" height="168"/>
-                                                <color key="backgroundColor" red="0.15215688943862915" green="0.3473164439201355" blue="0.51023852825164795" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="Past Runs"/>
+                                                <rect key="frame" x="0.0" y="181.5" width="283" height="174"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <state key="normal" title="Dashboard"/>
+                                                <connections>
+                                                    <segue destination="7wY-Ob-93n" kind="show" id="FL6-eo-Xj3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -58,7 +59,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Q2v-TW-4jN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="8sI-BI-nCE"/>
                             <constraint firstItem="Q2v-TW-4jN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AgV-U4-pwG"/>
@@ -67,15 +68,67 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nxN-ZT-Jt9"/>
+                    <connections>
+                        <outlet property="dashBoardButton" destination="cVm-Bp-73f" id="gjb-SV-7Yw"/>
+                        <outlet property="newRunButton" destination="Iq7-UK-TCs" id="OxO-dl-mnj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1994.4000000000001" y="-229.83508245877064"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="hM5-rU-IfZ">
+            <objects>
+                <tableViewController id="7wY-Ob-93n" customClass="PastRunViewController" customModule="running_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5MK-Pt-mRa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="vQ0-1X-T6q">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vQ0-1X-T6q" id="1h7-yp-D80">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="o1P-2L-vNQ" kind="show" identifier="showDetail" id="fMj-FR-Ig4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7wY-Ob-93n" id="CzW-fU-sgv"/>
+                            <outlet property="delegate" destination="7wY-Ob-93n" id="nzB-Ws-gVd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="iaD-Uu-cxj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZpQ-C2-XBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1994.4000000000001" y="508.69565217391306"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="arb-Uc-XgY">
+            <objects>
+                <navigationController id="pvS-e3-xUN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qz4-gO-cbC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7wY-Ob-93n" kind="relationship" relationship="rootViewController" id="DmE-Q5-xT0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DIY-zG-biJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2950" y="509"/>
+        </scene>
         <!--New Run View Controller-->
         <scene sceneID="Qhi-ay-UJd">
             <objects>
-                <viewController id="uBb-oE-18m" customClass="NewRunViewController" customModule="MoonRunner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uBb-oE-18m" customClass="NewRunViewController" customModule="running_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xfX-6x-8av"/>
                         <viewControllerLayoutGuide type="bottom" id="AVU-st-sAN"/>
@@ -210,7 +263,7 @@
         <!--Run Details View Controller-->
         <scene sceneID="8ca-LL-54v">
             <objects>
-                <viewController id="edy-es-7gn" customClass="RunDetailsViewController" customModule="MoonRunner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RunDetailsViewController" id="edy-es-7gn" customClass="RunDetailsViewController" customModule="running_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8HS-KC-Bpd"/>
                         <viewControllerLayoutGuide type="bottom" id="DiD-yF-DJb"/>
@@ -279,6 +332,7 @@
                             <constraint firstItem="jNH-dz-PwR" firstAttribute="height" secondItem="02b-8x-I0v" secondAttribute="height" multiplier="0.5" id="sXb-2W-F6h"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="RUi-BD-4US"/>
                     <connections>
                         <outlet property="dateLabel" destination="sAJ-v7-yGx" id="aTy-VQ-igK"/>
                         <outlet property="distanceLabel" destination="f8d-ls-rzA" id="tZJ-GU-F3O"/>
@@ -290,6 +344,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ra3-tu-a1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-236" y="-230.73463268365819"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DGF-0z-lLB">
+            <objects>
+                <navigationController id="o1P-2L-vNQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0EP-lG-Cz7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DYd-2s-ihh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="edy-es-7gn" kind="relationship" relationship="rootViewController" id="4pD-hI-Xlx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxR-cc-J50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1087" y="509"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FcT-3V-Ge2">
@@ -310,4 +381,8 @@
             <point key="canvasLocation" x="-2934" y="-229"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="oBx-ZB-XRA"/>
+        <segue reference="DmE-Q5-xT0"/>
+    </inferredMetricsTieBreakers>
 </document>

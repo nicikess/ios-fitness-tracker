@@ -22,6 +22,7 @@
 		CBB430092395AE9200D60DD1 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB430082395AE9200D60DD1 /* FormatDisplay.swift */; };
 		CBB4300B2395AEA200D60DD1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB4300A2395AEA200D60DD1 /* LocationManager.swift */; };
 		CBB430112395B37300D60DD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBB4300F2395B37300D60DD1 /* Main.storyboard */; };
+		CBC1A5DA2397005000280749 /* PastRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1A5D92397005000280749 /* PastRunViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		CBB4300A2395AEA200D60DD1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		CBB4300C2395B0F800D60DD1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBB430102395B37300D60DD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CBC1A5D92397005000280749 /* PastRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRunViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				CBB42FFA2395AD3700D60DD1 /* HomeViewController.swift */,
 				CBB42FFC2395AD4900D60DD1 /* NewRunViewController.swift */,
 				CBB42FFE2395AD5C00D60DD1 /* RunDetailsViewController.swift */,
+				CBC1A5D92397005000280749 /* PastRunViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				CBB430092395AE9200D60DD1 /* FormatDisplay.swift in Sources */,
 				CBB430052395AE5F00D60DD1 /* StoryboardSupport.swift in Sources */,
 				CBB430072395AE7C00D60DD1 /* UnitExtensions.swift in Sources */,
+				CBC1A5DA2397005000280749 /* PastRunViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

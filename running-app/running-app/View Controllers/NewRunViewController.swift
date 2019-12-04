@@ -27,7 +27,7 @@ class NewRunViewController: UIViewController {
   private var timer: Timer?
   
   //Speichert die zurückgelegte Distanz
-  private var distance = Measurement(value: 0, unit: UnitLength.meters)
+    private var distance = Measurement(value: 0, unit: UnitLength.kilometers)
   
   //Hälte alle während dem Run zurückgelegten CLLocation-Objekte
   private var locationList: [CLLocation] = []
@@ -35,6 +35,8 @@ class NewRunViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     dataStackView.isHidden = true
+    startButton.layer.cornerRadius = 10
+    stopButton.layer.cornerRadius = 10
   }
   
   /*Dadurch wird sichergestellt, dass Standortaktualisierungen sowie der Timer gestoppt werden, wenn der Benutzer aus der
@@ -57,7 +59,7 @@ class NewRunViewController: UIViewController {
     let formattedTime = FormatDisplay.time(seconds)
     let formattedPace = FormatDisplay.pace(distance: distance,
                                            seconds: seconds,
-                                           outputUnit: UnitSpeed.minutesPerMile)
+                                           outputUnit: UnitSpeed.kilometersPerHour)
      
     distanceLabel.text = "Distance:  \(formattedDistance)"
     timeLabel.text = "Time:  \(formattedTime)"
@@ -75,7 +77,7 @@ class NewRunViewController: UIViewController {
     /*Dadurch werden alle während des Laufs zu aktualisierenden Werte in ihren Ausgangszustand zurückgesetzt,
      der Timer gestartet, der jede Sekunde ausgelöst wird, und die Aktualisierung der Position gesammelt.*/
     seconds = 0
-    distance = Measurement(value: 0, unit: UnitLength.meters)
+    distance = Measurement(value: 0, unit: UnitLength.kilometers)
     locationList.removeAll()
     updateDisplay()
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -101,16 +103,16 @@ class NewRunViewController: UIViewController {
   
   @IBAction func stopTapped() {
     //User soll entscheiden können was passiert, wenn man stop drückt. Entweder "End run", "Cancel" oder "Save"
-    let alertController = UIAlertController(title: "End run?",
-                                            message: "Do you wish to end your run?",
+    let alertController = UIAlertController(title: "Run beenden?",
+                                            message: "Willst du dein Training beenden?",
                                             preferredStyle: .actionSheet)
-    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-    alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+    alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel))
+    alertController.addAction(UIAlertAction(title: "Speichern", style: .default) { _ in
       self.stopRun()
       self.saveRun()
       self.performSegue(withIdentifier: .details, sender: nil)
     })
-    alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
+    alertController.addAction(UIAlertAction(title: "Verwerfen", style: .destructive) { _ in
       self.stopRun()
       _ = self.navigationController?.popToRootViewController(animated: true)
     })
@@ -160,7 +162,6 @@ extension NewRunViewController: SegueHandlerType {
   }
 }
 
-
 /*Core Location meldet Standortaktualisierungen über den CLLocationManagerDelegate. Diese Delegiertenmethode wird jedes Mal
  aufgerufen, wenn Standort des Benutzers aktualisiert und stellt ein Array von CLLocation-Objekten bereit.*/
 
@@ -176,7 +177,7 @@ extension NewRunViewController: CLLocationManagerDelegate {
 
       if let lastLocation = locationList.last {
         let delta = newLocation.distance(from: lastLocation)
-        distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+        distance = distance + Measurement(value: delta, unit: UnitLength.kilometers)
         let coordinates = [lastLocation.coordinate, newLocation.coordinate]
         mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
         let region = MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
