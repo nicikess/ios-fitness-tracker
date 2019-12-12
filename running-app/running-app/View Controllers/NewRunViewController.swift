@@ -45,7 +45,13 @@ class NewRunViewController: UIViewController {
     super.viewWillDisappear(animated)
     timer?.invalidate()
     locationManager.stopUpdatingLocation()
+      navigationController?.setNavigationBarHidden(false, animated: animated)
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.setNavigationBarHidden(true, animated: animated)
+}
   
   //wird jede Sekunde vom Timer gecalled
   func eachSecond() {

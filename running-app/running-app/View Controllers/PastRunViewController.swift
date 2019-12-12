@@ -21,7 +21,13 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
+            navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+
+override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.setNavigationBarHidden(false, animated: animated)
+}
     
     // MARK: - Segues
     
@@ -30,7 +36,7 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = fetchedResultsController.object(at: indexPath)
-                let controller = (segue.destination as! UINavigationController).topViewController as! RunDetailsViewController
+                let controller = segue.destination as! RunDetailsViewController
                 controller.run = object
                 controller.managedContext = managedObjectContext
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -85,6 +91,7 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
         df.dateFormat = "yyyy-MM-dd hh:mm:ss"
         let now = df.string(for: run.timestamp)
         let description = now?.description
+        cell.textLabel!.text=description
     }
     
     // MARK: - Fetched results controller
