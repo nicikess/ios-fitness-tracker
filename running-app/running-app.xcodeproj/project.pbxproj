@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB7A607D2395B60900506AD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A607C2395B60900506AD2 /* SceneDelegate.swift */; };
-		CB838BB223A4DEE100A27900 /* running.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB838BB123A4DEE100A27900 /* running.jpg */; };
+		CB9AC10A23A666BC001CD6E9 /* running.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB9AC10923A666BB001CD6E9 /* running.jpg */; };
 		CBB42FD22395AC4200D60DD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB42FD12395AC4200D60DD1 /* AppDelegate.swift */; };
 		CBB42FDC2395AC4200D60DD1 /* running_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBB42FDA2395AC4200D60DD1 /* running_app.xcdatamodeld */; };
 		CBB42FDE2395AC4300D60DD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB42FDD2395AC4300D60DD1 /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		CB7A607C2395B60900506AD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CB838BB123A4DEE100A27900 /* running.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = running.jpg; path = ../../../../../../../Desktop/running.jpg; sourceTree = "<group>"; };
+		CB9AC10923A666BB001CD6E9 /* running.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = running.jpg; path = "running-app/Storyboards/running.jpg"; sourceTree = "<group>"; };
 		CBB42FCE2395AC4200D60DD1 /* running-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "running-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB42FD12395AC4200D60DD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBB42FDB2395AC4200D60DD1 /* running_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = running_app.xcdatamodel; sourceTree = "<group>"; };
@@ -82,6 +82,7 @@
 		CBB42FC52395AC4200D60DD1 = {
 			isa = PBXGroup;
 			children = (
+				CB9AC10923A666BB001CD6E9 /* running.jpg */,
 				CBB4300E2395B13D00D60DD1 /* running-app */,
 				E10A2284239FCC6700A26B02 /* running-app copy-Info.plist */,
 			);
@@ -109,7 +110,6 @@
 		CBB42FF82395ACF200D60DD1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				CB838BB123A4DEE100A27900 /* running.jpg */,
 				CBB4300F2395B37300D60DD1 /* Main.storyboard */,
 				CBB42FDD2395AC4300D60DD1 /* Assets.xcassets */,
 				CBB42FDF2395AC4300D60DD1 /* LaunchScreen.storyboard */,
@@ -248,7 +248,7 @@
 				CBB430112395B37300D60DD1 /* Main.storyboard in Resources */,
 				CBB42FE12395AC4300D60DD1 /* LaunchScreen.storyboard in Resources */,
 				CBB42FDE2395AC4300D60DD1 /* Assets.xcassets in Resources */,
-				CB838BB223A4DEE100A27900 /* running.jpg in Resources */,
+				CB9AC10A23A666BC001CD6E9 /* running.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

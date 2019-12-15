@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     tabBarController?.tabBar.items![0].title = "Home Screen"
     tabBarController?.tabBar.items![1].title = "Neuer Run"
     tabBarController?.tabBar.items![2].title = "Dashboard"
+    
     super.viewDidLoad()
   }
   

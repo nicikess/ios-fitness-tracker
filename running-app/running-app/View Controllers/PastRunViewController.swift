@@ -88,11 +88,7 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
         } else {
             run = fetchedResultsController.object(at: indexPath)
         }
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        let now = df.string(for: run.timestamp)
-        let description = now?.description
-        cell.textLabel?.text = description
+        configureCell(cell, withRun: run)
         return cell
         }
 
@@ -119,12 +115,7 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
     }
     
     func configureCell(_ cell: UITableViewCell, withRun run: Run) {
-        //Konvertierung von Date in String
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        let now = df.string(for: run.timestamp)
-        let description = now?.description
-        cell.textLabel!.text = description
+        cell.textLabel!.text = run.timestamp?.description
     }
     
     // MARK: - Fetched results controller
@@ -160,7 +151,6 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         
-        //print(_fetchedResultsController)
         return _fetchedResultsController!
     }
     
@@ -216,7 +206,6 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
         filteredRuns = object!.filter { (run: Run) -> Bool in
                 return (run.timestamp?.description.contains(searchText.lowercased()))!
             }
-        
         tableView.reloadData()
     }
     
