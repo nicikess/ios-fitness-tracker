@@ -27,7 +27,7 @@ class NewRunViewController: UIViewController {
   private var timer: Timer?
   
   //Speichert die zurückgelegte Distanz
-    private var distance = Measurement(value: 0, unit: UnitLength.kilometers)
+    private var distance = Measurement(value: 0, unit: UnitLength.meters)
   
   //Hälte alle während dem Run zurückgelegten CLLocation-Objekte
   private var locationList: [CLLocation] = []
@@ -35,8 +35,11 @@ class NewRunViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     dataStackView.isHidden = true
-    startButton.layer.cornerRadius = 10
-    stopButton.layer.cornerRadius = 10
+    startButton.layer.cornerRadius = 20
+    stopButton.layer.cornerRadius = 20
+    tabBarController?.tabBar.items![0].title = "Home Screen"
+    tabBarController?.tabBar.items![1].title = "Neuer Run"
+    tabBarController?.tabBar.items![2].title = "Dashboard"
   }
   
   /*Dadurch wird sichergestellt, dass Standortaktualisierungen sowie der Timer gestoppt werden, wenn der Benutzer aus der
@@ -66,10 +69,11 @@ class NewRunViewController: UIViewController {
     let formattedPace = FormatDisplay.pace(distance: distance,
                                            seconds: seconds,
                                            outputUnit: UnitSpeed.kilometersPerHour)
-     
-    distanceLabel.text = "Distance:  \(formattedDistance)"
-    timeLabel.text = "Time:  \(formattedTime)"
-    paceLabel.text = "Pace:  \(formattedPace)"
+     let index = formattedDistance.index(formattedDistance.startIndex, offsetBy: 5)
+     let mySubstring = formattedDistance.prefix(upTo: index)
+    distanceLabel.text = "Distance:  \(mySubstring) \("Meter")"
+    timeLabel.text = "Zeit:  \(formattedTime)"
+    paceLabel.text = "Geschwindigkeit:  \(formattedPace)"
   }
   
   private func startRun() {
@@ -83,7 +87,7 @@ class NewRunViewController: UIViewController {
     /*Dadurch werden alle während des Laufs zu aktualisierenden Werte in ihren Ausgangszustand zurückgesetzt,
      der Timer gestartet, der jede Sekunde ausgelöst wird, und die Aktualisierung der Position gesammelt.*/
     seconds = 0
-    distance = Measurement(value: 0, unit: UnitLength.kilometers)
+    distance = Measurement(value: 0, unit: UnitLength.meters)
     locationList.removeAll()
     updateDisplay()
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -183,7 +187,7 @@ extension NewRunViewController: CLLocationManagerDelegate {
 
       if let lastLocation = locationList.last {
         let delta = newLocation.distance(from: lastLocation)
-        distance = distance + Measurement(value: delta, unit: UnitLength.kilometers)
+        distance = distance + Measurement(value: delta, unit: UnitLength.meters)
         let coordinates = [lastLocation.coordinate, newLocation.coordinate]
         mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
         let region = MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)

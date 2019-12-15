@@ -31,6 +31,9 @@ var managedContext : NSManagedObjectContext?
     super.viewDidLoad()
     //run = detailItem
     configureView()
+    tabBarController?.tabBar.items![0].title = "Home Screen"
+    tabBarController?.tabBar.items![1].title = "Neuer Run"
+    tabBarController?.tabBar.items![2].title = "Dashboard"
   }
   
   private func configureView() {
@@ -43,10 +46,12 @@ var managedContext : NSManagedObjectContext?
                                            seconds: seconds,
                                            outputUnit: UnitSpeed.kilometersPerHour)
     
-    distanceLabel.text = "Distance:  \(formattedDistance)"
+    let index = formattedDistance.index(formattedDistance.startIndex, offsetBy: 5)
+    let mySubstring = formattedDistance.prefix(upTo: index)
+    distanceLabel.text = "Distanz:  \(mySubstring)"
     dateLabel.text = formattedDate
-    timeLabel.text = "Time:  \(formattedTime)"
-    paceLabel.text = "Pace:  \(formattedPace)"
+    timeLabel.text = "Zeit:  \(formattedTime)"
+    paceLabel.text = "Geschwindigkeit:  \(formattedPace)"
     
     //Map laden
     loadMap()
@@ -103,8 +108,8 @@ var managedContext : NSManagedObjectContext?
       locations.count > 0,
       let region = mapRegion()
     else {
-        let alert = UIAlertController(title: "Error",
-                                      message: "Sorry, this run has no locations saved",
+        let alert = UIAlertController(title: "Fehler",
+                                      message: "Sorry, dieser Run hat keine Locations",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         present(alert, animated: true)

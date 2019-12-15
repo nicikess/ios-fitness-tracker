@@ -1,5 +1,3 @@
-//
-//  PastRunViewConstroller.swift
 //  running-app
 //
 //  Created by Nicolas Kesseli on 03.12.19.
@@ -11,23 +9,40 @@ import CoreData
 
 class PastRunViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
+    
     var runDetailsViewController: RunDetailsViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
-
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var filteredRuns: [Run] = []
+    
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Nach Runs suchen"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        tabBarController?.tabBar.items![0].title = "Home Screen"
+        tabBarController?.tabBar.items![1].title = "Neuer Run"
+        tabBarController?.tabBar.items![2].title = "Dashboard"
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
-            navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
-override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    navigationController?.setNavigationBarHidden(false, animated: animated)
-}
     
     // MARK: - Segues
     
@@ -35,8 +50,13 @@ override func viewWillDisappear(_ animated: Bool) {
         
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = fetchedResultsController.object(at: indexPath)
-                let controller = segue.destination as! RunDetailsViewController
+                let object: Run
+                if (isFiltering) {
+                    object = filteredRuns[indexPath.row]
+                } else {
+                    object = fetchedResultsController.object(at: indexPath)
+                }
+                let controller = (segue.destination as! UINavigationController).topViewController as! RunDetailsViewController
                 controller.run = object
                 controller.managedContext = managedObjectContext
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -53,16 +73,29 @@ override func viewWillDisappear(_ animated: Bool) {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+          return filteredRuns.count
+        }
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let run = fetchedResultsController.object(at: indexPath)
-        configureCell(cell, withRun: run)
+        let run: Run
+        if isFiltering {
+            run = filteredRuns[indexPath.row]
+        } else {
+            run = fetchedResultsController.object(at: indexPath)
+        }
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        let now = df.string(for: run.timestamp)
+        let description = now?.description
+        cell.textLabel?.text = description
         return cell
-    }
+        }
+
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -91,7 +124,7 @@ override func viewWillDisappear(_ animated: Bool) {
         df.dateFormat = "yyyy-MM-dd hh:mm:ss"
         let now = df.string(for: run.timestamp)
         let description = now?.description
-        cell.textLabel!.text=description
+        cell.textLabel!.text = description
     }
     
     // MARK: - Fetched results controller
@@ -127,8 +160,10 @@ override func viewWillDisappear(_ animated: Bool) {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         
+        //print(_fetchedResultsController)
         return _fetchedResultsController!
     }
+    
     var _fetchedResultsController: NSFetchedResultsController<Run>? = nil
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -175,4 +210,21 @@ override func viewWillDisappear(_ animated: Bool) {
      }
      */
     
+    func filterContentForSearchText(_ searchText: String) {
+
+        let object = fetchedResultsController.fetchedObjects
+        filteredRuns = object!.filter { (run: Run) -> Bool in
+                return (run.timestamp?.description.contains(searchText.lowercased()))!
+            }
+        
+        tableView.reloadData()
+    }
+    
+}
+
+extension PastRunViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
 }

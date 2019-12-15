@@ -13,8 +13,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var dashBoardButton: UIButton!
     @IBOutlet weak var newRunButton: UIButton!
     override func viewDidLoad() {
-    dashBoardButton.layer.cornerRadius = 10
-    newRunButton.layer.cornerRadius = 10
+    tabBarController?.tabBar.items![0].title = "Home Screen"
+    tabBarController?.tabBar.items![1].title = "Neuer Run"
+    tabBarController?.tabBar.items![2].title = "Dashboard"
     super.viewDidLoad()
   }
   
