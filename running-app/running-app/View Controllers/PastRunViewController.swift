@@ -56,7 +56,7 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
                 } else {
                     object = fetchedResultsController.object(at: indexPath)
                 }
-                let controller = (segue.destination as! UINavigationController).topViewController as! RunDetailsViewController
+                let controller = (segue.destination as! RunDetailsViewController)
                 controller.run = object
                 controller.managedContext = managedObjectContext
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
