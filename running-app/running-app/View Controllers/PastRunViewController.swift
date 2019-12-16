@@ -36,6 +36,9 @@ class PastRunViewController: UITableViewController, NSFetchedResultsControllerDe
         tabBarController?.tabBar.items![0].title = "Home Screen"
         tabBarController?.tabBar.items![1].title = "Neuer Run"
         tabBarController?.tabBar.items![2].title = "Dashboard"
+        tabBarController?.tabBar.items![0].image = #imageLiteral(resourceName: "home25.png")
+        tabBarController?.tabBar.items![1].image = #imageLiteral(resourceName: "running25.png")
+        tabBarController?.tabBar.items![2].image = #imageLiteral(resourceName: "dashboard25.png")
         
     }
     

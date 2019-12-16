@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9FR-hF-hQH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9FR-hF-hQH">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="running_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,14 +40,14 @@
                             <constraint firstItem="TAg-4M-Kqe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jbo-FD-6Yb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="CGQ-iH-hNF"/>
+                    <tabBarItem key="tabBarItem" title="Home Screen" image="home25.png" id="CGQ-iH-hNF"/>
                     <navigationItem key="navigationItem" id="nxN-ZT-Jt9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1994.4000000000001" y="-229.83508245877064"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Dashboard-->
         <scene sceneID="hM5-rU-IfZ">
             <objects>
                 <tableViewController id="7wY-Ob-93n" customClass="PastRunViewController" customModule="running_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                             <outlet property="delegate" destination="7wY-Ob-93n" id="nzB-Ws-gVd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="iaD-Uu-cxj"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="iaD-Uu-cxj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZpQ-C2-XBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,10 +116,10 @@
                                         <rect key="frame" x="10" y="0.0" width="323" height="257"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TEI-Oa-26B" userLabel="Launch Stack View">
-                                                <rect key="frame" x="20.5" y="0.0" width="282.5" height="128.5"/>
+                                                <rect key="frame" x="20.5" y="0.0" width="282" height="128.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drücke Start um mit dem Training zu beginnen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctd-6B-91X">
-                                                        <rect key="frame" x="0.0" y="0.0" width="282.5" height="128.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="282" height="128.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
@@ -159,7 +159,7 @@
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3O-Ns-MFS">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="0.0"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="Stop">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -170,7 +170,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHH-kB-UAe">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="256.5"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Start!">
@@ -219,14 +219,14 @@
         <!--Tab Bar Controller-->
         <scene sceneID="GhG-Ez-ejV">
             <objects>
-                <tabBarController id="9FR-hF-hQH" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="dZv-bv-09m"/>
+                <tabBarController storyboardIdentifier="TabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9FR-hF-hQH" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dag-Kc-uXu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBar" destination="dag-Kc-uXu" id="zhx-KF-Gig"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="gmj-rE-WdG"/>
                         <segue destination="z6N-8T-OGO" kind="relationship" relationship="viewControllers" id="eUG-TP-90s"/>
                         <segue destination="IKj-eU-Y4W" kind="relationship" relationship="viewControllers" id="Kd6-f7-Uoa"/>
@@ -234,9 +234,9 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3s-es-bgZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1087" y="-1144"/>
+            <point key="canvasLocation" x="-1262" y="-1200"/>
         </scene>
-        <!--Run Details View Controller-->
+        <!--Run-->
         <scene sceneID="8ca-LL-54v">
             <objects>
                 <viewController storyboardIdentifier="RunDetailsViewController" id="edy-es-7gn" customClass="RunDetailsViewController" customModule="running_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -308,9 +308,9 @@
                             <constraint firstItem="jNH-dz-PwR" firstAttribute="height" secondItem="02b-8x-I0v" secondAttribute="height" multiplier="0.5" id="sXb-2W-F6h"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="RUi-BD-4US">
+                    <navigationItem key="navigationItem" title="Run" largeTitleDisplayMode="always" id="RUi-BD-4US">
                         <barButtonItem key="backBarButtonItem" title="Back" style="done" id="0tM-tA-BAf">
-                            <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -325,11 +325,11 @@
             </objects>
             <point key="canvasLocation" x="1072.8" y="-230.73463268365819"/>
         </scene>
-        <!--Item-->
+        <!--Neuer Run-->
         <scene sceneID="jXv-7d-bKu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z6N-8T-OGO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="IIn-Fg-hD7"/>
+                    <tabBarItem key="tabBarItem" title="Neuer Run" image="running25.png" id="IIn-Fg-hD7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dq8-El-7Ro">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -344,11 +344,11 @@
             </objects>
             <point key="canvasLocation" x="-940" y="-232.53373313343329"/>
         </scene>
-        <!--Item-->
+        <!--Dashboard-->
         <scene sceneID="Wjy-hy-4fM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IKj-eU-Y4W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="HRn-ys-MwJ"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard25.png" id="HRn-ys-MwJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pcc-Pe-ORl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -365,7 +365,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dashboard25.png" width="18.75" height="18.75"/>
+        <image name="home25.png" width="18.75" height="18.75"/>
         <image name="running.jpg" width="474" height="842"/>
+        <image name="running25.png" width="18.75" height="18.75"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LOL-JS-kDo"/>
