@@ -12,6 +12,9 @@ This reposity include the final project of the IOS course that I took in my Bach
 
 4. App Development: Put your knowledge into practice by building your own iOS apps. The course places a strong emphasis on hands-on development, providing numerous practical exercises and culminating in an individual capstone project.
 
+## Final project
+This repository includes the source code of the final project. As this I developed an IOS app that can be used to track runs and biking routes when training as store the data locally on the device.
+
 ## Getting Started
 To get started with iOS Programming, follow these steps:
 
